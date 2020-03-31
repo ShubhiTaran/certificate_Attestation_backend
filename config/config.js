@@ -3,7 +3,7 @@ const config = {
     port:465,
     express_port:3000,
     // db:"mongodb://10.187.202.154:27017/daa",
-    db:"mongodb://localhost:27017/daa",
+    db:"mongodb://172.32.1.63:27017/daa",
     communicate:'sushilkumar.shinde@nic.in',
     mail_service:'relay.nic.in',
     mail_id: 'certauth.hted-mh@gov.in',
