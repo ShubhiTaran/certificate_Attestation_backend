@@ -1,15 +1,16 @@
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'relay.nic.in',
+  port:465,
   auth: {
-    user: 'htedu.maharashtra@gmail.com',
-    pass: 'New1@2020'
+    user: 'certauth.hted-mh@gov.in',
+    pass: 'W1%dL0%aF7'
   }
 });
 
 var mailOptions = {
-  from: 'htedu.maharashtra@gmail.com',
+  from: 'certauth.hted-mh@gov.in',
   to: 'shubhi.taran@rapidqube.com',
   subject: 'Sending Email using Node.js',
   text: 'That was easy!'
