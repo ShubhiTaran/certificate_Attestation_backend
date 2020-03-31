@@ -1,0 +1,35 @@
+
+# @url = http://localhost:3000
+@url = https://103.8.188.159:3000
+
+
+###
+POST {{url}}/studentlogin
+Content-Type: application/json
+
+{
+    "email_id":"sree.kannnan@rapidqube.com",
+    "password":"U2FsdGVkX1+fzkOiXSPIMk8zHJ7h3JvVrG2zyxZjk7M="
+}
+
+
+###
+POST {{url}}/registration
+Content-Type: application/json
+
+{
+"confirm_password": "Rpqb$&7500",
+"contact": "9042141018",
+"contact_status": "",
+"dob": "1991-02-06T18:30:00.000Z",
+"email_choice": true,
+"email_id": "sree.kannan@rapidqube.com",
+"first_name": "Sree",
+"gender": "Male",
+"last_name": "Test",
+"middle_name": "",
+"nationality": "India",
+"others": "",
+"password": "Rpqb$&7500",
+"university": "Tilak Maharashtra Vidyapeeth, Pune"
+}

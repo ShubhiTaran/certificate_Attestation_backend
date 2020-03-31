@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="298px" height="82px" viewBox="0 0 298 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>4AB6F03B-04C8-42D7-A1C4-86F78E5DE78E</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <ellipse id="path-1" cx="49.5989182" cy="49.770759" rx="36.4629291" ry="36.1312992"></ellipse>
+        <filter x="-9.6%" y="-6.9%" width="119.2%" height="119.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="37-GOM" transform="translate(-89.000000, -471.000000)">
+            <g id="Group-4" transform="translate(78.000000, 461.000000)">
+                <polygon id="Rectangle" fill="#F8B64C" points="47 14 309 14 286.117904 49.8183594 309 86 47 86"></polygon>
+                <g id="Group" fill-rule="nonzero">
+                    <g id="Oval" transform="translate(49.598918, 49.770759) rotate(-60.000000) translate(-49.598918, -49.770759) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFD15C" xlink:href="#path-1"></use>
+                    </g>
+                    <ellipse id="Oval" fill="#F8B64C" transform="translate(49.598918, 49.770759) rotate(-60.000000) translate(-49.598918, -49.770759) " cx="49.5989182" cy="49.770759" rx="26.4297483" ry="26.1893701"></ellipse>
+                    <path d="M65.1097072,47.7858984 C65.9232084,46.9977094 65.4712633,45.6183787 64.3504395,45.4571582 L53.919547,43.9524338 C53.467602,43.8807803 53.0879681,43.6120795 52.8891123,43.2000716 L48.225039,33.8313708 C47.7188605,32.8103078 46.2545585,32.8103078 45.74838,33.8313708 L41.1023846,43.2000716 C40.9035287,43.5941661 40.5058171,43.8807803 40.0719498,43.9524338 L29.6410573,45.4571582 C28.5202335,45.6183787 28.0682885,46.9977094 28.8817896,47.7858984 L36.4202335,55.0766464 C36.745634,55.3990874 36.8902564,55.846922 36.8179452,56.2768433 L35.0463205,66.5591267 C34.8474647,67.6697566 36.0405997,68.5295992 37.0529566,67.9921976 L46.3811031,63.13767 C46.7788148,62.9227094 47.2669155,62.9227094 47.6646271,63.13767 L56.9927736,67.9921976 C58.0051306,68.5116858 59.1801878,67.6697566 58.9994097,66.5591267 L57.2097072,56.2768433 C57.137396,55.8290086 57.2820184,55.381174 57.6074189,55.0766464 L65.1097072,47.7858984 Z" id="Shape" fill="#FFFFFF" transform="translate(46.995748, 50.611048) rotate(-73.000000) translate(-46.995748, -50.611048) "></path>
+                </g>
+                <text id="Verify-Attested-Cert" fill="#000000" font-family="Roboto-Medium, Roboto" font-size="14" font-weight="400">
+                    <tspan x="96" y="63.0494644">Verify Attested Certificates</tspan>
+                </text>
+                <text id="Click-Here-to" fill="#000000" font-family="Roboto-Regular, Roboto" font-size="12" font-weight="normal">
+                    <tspan x="96" y="43.0494644">Click Here to</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

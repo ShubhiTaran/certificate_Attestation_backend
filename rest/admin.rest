@@ -1,0 +1,43 @@
+# @url = http://localhost:3000
+@url = https://103.8.188.159:3000
+
+###
+POST {{url}}/studentlogin
+Content-Type: application/json
+
+{
+    "email_id":"admin@mahait.com",
+    "password":"U2FsdGVkX19oj5Y6rizUdd8KmCL+6raoW/nSQ1XvgRU="
+}
+
+###
+POST {{url}}/addAdmin
+Content-Type: application/json
+
+{
+    "user_type": "admin",
+    "first_name": "Admin",
+    "last_name": "last_name",
+    "phone_number":"7869074062",
+    "email_id": "admin@mahait.com",
+    "password": "123456"
+}
+
+
+###
+
+POST {{url}}/hashConvertion
+Content-Type: application/json
+
+{
+      "application_no": "HTE2020-0004",
+      "private_key": "-----BEGIN ENCRYPTED PRIVATE KEY-----MIIBvTBXBgkqhkiG9w0BBQ0wSjApBgkqhkiG9w0BBQwwHAQIDYTsxFvHFZUCAggAMAwGCCqGSIb3DQIJBQAwHQYJYIZIAWUDBAEqBBBcytK8UkVLB6VgMA/zxgt3BIIBYPdAiz03+X1zLi8XvsnMgdqjlO/DwCETBqcu09xgMHE0On0Qk95HnBdyo3xRXEOdczrFFF8H4NSMNoG3lPVbR9uEoWVBnxJBquNj3gqJkZfNBho3tLD+wtd+6uR/wHKM9/SFJza1mTC56gJVkEB12utnkDoHHmglfRgcM8zczkwqZjwZvNNnws9sj+v//JTU+gEOcNg3jKL5fZXaLZh28tEDnZec5sPkRQ8qVxAqOuCqr5wkNCHBmgifeVmIhLLJMisRsK8JfkRjrpOjGAGlu5v4VS+ua2KwYtC/KOFarhxs3UBJFBhSrtN1feEqXsS0DYf6y8JXs1dODykKwVq4Qzuo9cBwVerp6kGIMXaZmYPqFbU1Lzi6xnhEijc2XbMvW1rvPvWIsx6EK1Q+f9O3AWOIZ7ZJmaTlIucyh0kqzZ4hDF6EZIjtjfibF0U+thibec2A2NWWTeXBQNg/Wq4vRaM=-----END ENCRYPTED PRIVATE KEY-----"
+}
+
+####
+POST {{url}}/univercityCheck
+Content-Type: application/json
+
+{
+    "hash":"f23784df73f5451f05609725ba292f1d"
+}
