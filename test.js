@@ -1,7 +1,8 @@
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-  service: 'relay.nic.in',
+  host: 'relay.nic.in',
+  port:465,
   auth: {
     user: 'certauth.hted-mh@gov.in',
     pass: 'W1%dL0%aF7'
