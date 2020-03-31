@@ -1,7 +1,9 @@
 const config = {
     password_salt: 'Rpqb$2018',
     port:465,
-    db:"mongodb://10.187.202.154:27017/daa",
+    express_port:3000,
+    // db:"mongodb://10.187.202.154:27017/daa",
+    db:"mongodb://localhost:27017/daa",
     communicate:'sushilkumar.shinde@nic.in',
     mail_service:'relay.nic.in',
     mail_id: 'certauth.hted-mh@gov.in',
