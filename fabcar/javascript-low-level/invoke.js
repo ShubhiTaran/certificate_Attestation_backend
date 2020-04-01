@@ -18,9 +18,9 @@ var fabric_client = new Fabric_Client();
 
 // setup the fabric network
 var channel = fabric_client.newChannel('mychannel');
-var peer = fabric_client.newPeer('grpc://localhost:7051');
+var peer = fabric_client.newPeer('grpc://172.32.1.13:7051');
 channel.addPeer(peer);
-var order = fabric_client.newOrderer('grpc://localhost:7050')
+var order = fabric_client.newOrderer('grpc://172.32.1.13:7050')
 channel.addOrderer(order);
 
 //
