@@ -9,6 +9,7 @@ const crypto = require('crypto');
 const http = require("http");
 var timeout = require('connect-timeout');
 var log4js = require('log4js');
+const constants = require('constants')
 const config = require('./config/config')
 log4js.configure({
   appenders: { app: { type: 'file', filename: 'logs/app.log' } },
@@ -88,7 +89,7 @@ https.createServer(options, app).listen(port, function(){
 });
 }
 catch(error){
-  console.log('need ssl certificate');
+  console.log('need ssl certificate', error);
   app.listen(port, () => {
   log.info("Server listening on port " + port);
  console.log("Server listening on port " + port);
