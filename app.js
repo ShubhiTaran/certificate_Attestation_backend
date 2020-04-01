@@ -81,10 +81,10 @@ var options={
     key:fs.readFileSync('ssl/mahagovprivate.key'),
   cert:fs.readFileSync('ssl/star_maharashtra_gov_in.crt'),
 secureOptions:constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1
-
 }
 https.createServer(options, app).listen(port, function(){
   console.log("Express server listening on port " + port);
+  console.log('it is runnig with ssl certificate.')
 });
 }
 catch(error){
