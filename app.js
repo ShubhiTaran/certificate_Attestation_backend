@@ -79,7 +79,7 @@ require("./functions/Registration_login/addAdmin")();
 
 try{
 var options={
-    key:fs.readFileSync('ssl/mahagovprivate.key'),
+    key:fs.readFileSync('ssl/mahagovprivate.keys'),
   cert:fs.readFileSync('ssl/star_maharashtra_gov_in.crt'),
 secureOptions:constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1
 }
@@ -89,7 +89,7 @@ https.createServer(options, app).listen(port, function(){
 });
 }
 catch(error){
-  console.log('need ssl certificate', error);
+  // console.log('need ssl certificate', error);
   app.listen(port, () => {
   log.info("Server listening on port " + port);
  console.log("Server listening on port " + port);

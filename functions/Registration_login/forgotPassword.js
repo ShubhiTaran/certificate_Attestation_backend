@@ -3,9 +3,6 @@
 const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
-const request = require('request');
-const exec = require('child_process').exec;
-const path = require('path');
 const os = require('os');
 
 
@@ -32,8 +29,8 @@ function forgotPassword(req, res) {
             "email_id": email_id,
         })
 
-        var allAddress = os.networkInterfaces();
-        var ipAddress = allAddress.eth0[0].address;
+        // var allAddress = os.networkInterfaces();
+        // var ipAddress = allAddress.eth0[0].address;
 
         if (forgotPassword != null) {
 
@@ -49,7 +46,7 @@ function forgotPassword(req, res) {
                 to: setPassword.email_id,
                 subject: "Document Authentication Reset password",
                 text: "Hello " + setPassword.first_name + ",\n\nPlease set your password from following link.\n\n" +
-                    "http://" + ipAddress + ":4200/#/reset-pass?set_password_id=" +
+                config.forget_password_url + "/#/reset-pass?set_password_id=" +
                     setPassword.set_password_id +
                     "\n\nThank you,\nMaharashtra Education Department"
             })

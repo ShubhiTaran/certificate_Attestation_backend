@@ -1,6 +1,6 @@
 
-# @url = http://localhost:3000
-@url = https://103.8.188.159:3000
+@url = http://localhost:3000
+# @url = https://103.8.188.159:3000
 
 
 ###
@@ -32,4 +32,14 @@ Content-Type: application/json
 "others": "",
 "password": "Rpqb$&7500",
 "university": "Tilak Maharashtra Vidyapeeth, Pune"
+}
+
+
+###
+
+POST {{url}}/forgotPassword
+Content-Type: application/json
+
+{
+    "email_id":"sree.kannnan@rapidqube.com"
 }
