@@ -3,6 +3,7 @@
 const db = require('.././../models/student/studentDetails');
 const config = require('../../config/config')
 const nodemailer = require('nodemailer');
+const {template}  = require('../../email_template/htmlTemplate')
 
 module.exports = {
     submitApplication : submitApplication,
@@ -66,13 +67,16 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
+                                    const head = `Dear ${res.first_name}, `;
+                                    const body = `Thank you for submitting your documents. 
+                                                    We will get back to you on your registered email address post 
+                                                    verification of submitted documents.`;
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
                                         subject : "Document Authentication Application",
-                                        text : "Dear " + res.first_name + ",\n\n" +
-                                                    "Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.\n\n" +
-                                                    "Thank you,\nMaharashtra Education Department"
+                                        attachments:config.attachments,
+                                        html:template(head, body)
                                     },
                                     function(error, info){
                                         if(error){
@@ -115,6 +119,8 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
+                                    const subject = '';
+                                    const head = ``
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,

@@ -3,6 +3,8 @@
 var db = require('.././../models/student/studentDetails');
 var nodemailer = require('nodemailer');
 const config = require('../../config/config')
+const {template}  = require('../../email_template/htmlTemplate')
+
 const request = require('request');
 const exec = require('child_process').exec;
 const path = require('path');
@@ -33,6 +35,8 @@ function email_otp(req, res) {
             }
         }, { new: true })
             .then((result) => {
+                const head = `Hello ${result.first_name}, `;
+                const boyd = ``
                 transporter.sendMail({
                     from : config.mail_id,
                     to : result.email_id,

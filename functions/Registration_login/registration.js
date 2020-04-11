@@ -3,10 +3,7 @@
 const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
-const request = require('request');
-const exec = require('child_process').exec;
-const path = require('path');
-const os = require('os');
+const {template}  = require('../../email_template/htmlTemplate')
 
 module.exports = {
     studentRegistration: studentRegistration
@@ -36,13 +33,16 @@ function studentRegistration(req, res) {
                     }
                 }
                 else {
+ 
+                    const subject = 'Document Authentication Email Verification';
+                    const head = `Hello ${req.first_name}, `
+                    const body = `You are successfully registered with us.`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
-                        subject: "Document Authentication Email Verification",
-                        text: "Hello " + req.first_name + ",\n\nYou are successfully registered with us." +
-                            "\n\nThank you,\nMaharashtra H&TE Department"
-
+                        subject: subject,
+                        attachments: config.attachments,
+                        html:template(head, body)
                     },
                         function (error, info) {
                             if (error) {
@@ -70,13 +70,16 @@ function studentRegistration(req, res) {
                     }
                 }
                 else {
+                    const subject = "Document Authentication Email Verification";
+                    const head = `Dear ${req.first_name}, `;
+                    const body = `Following is the OTP of your Document Authentication portal.`;
+                    const assOtp = `OTP : ${req.email_otp }`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
-                        subject: "Document Authentication Email Verification",
-                        text: "Dear " + req.first_name + ",\n\n" +
-                            "Following is the OTP of your Document Authentication portal. OTP : " + req.email_otp + "\n\n" +
-                            "\n\nThank you,\nMaharashtra H&TE Department"
+                        subject: subject,
+                        attachments: config.attachments,
+                        html:template(head, body, assOtp)
 
                     },
                         function (error, info) {
