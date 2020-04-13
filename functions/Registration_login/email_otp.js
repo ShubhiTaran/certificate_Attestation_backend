@@ -37,7 +37,8 @@ function email_otp(req, res) {
             .then((result) => {
                 const subject = "Document Authentication Registration";
                 const name = result.first_name;
-                const body = 'You are successfully registered with us.';
+                const body = `You have successfully logged in to MahaIT’s BlockChain Driven Certificate cum
+                Document Authentication Application.`;
                 transporter.sendMail({
                     from : config.mail_id,
                     to : result.email_id,

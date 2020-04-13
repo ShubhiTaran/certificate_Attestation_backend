@@ -71,9 +71,10 @@ function submitApplication(req, res){
                                     }
                                     const subject = 'Document Authentication Application'
                                     const name = res.first_name;
-                                    const body = `Thank you for submitting your documents. 
-                                                    We will get back to you on your registered email address post 
-                                                    verification of submitted documents.`;
+                                    const body = `Thank you for submitting your Application to MahaIT’s BlockChain Driven
+                                                    Certificate cum Document Authentication Application. We will come back to
+                                                    you in 3 – 5 days time after doing the verification of all the Documents on your
+                                                    Registered E-Mail Id`;
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
@@ -126,7 +127,10 @@ function submitApplication(req, res){
                                     }
                                     const subject = 'Document Authentication Application';
                                     const name = res.first_name;
-                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.'
+                                    const body =  `Thank you for submitting your Application to MahaIT’s BlockChain Driven
+                                    Certificate cum Document Authentication Application. We will come back to
+                                    you in 3 – 5 days time after doing the verification of all the Documents on your
+                                    Registered E-Mail Id`
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
@@ -182,7 +186,10 @@ function submitApplication(req, res){
                                     }
                                     const subject = "Document Authentication Application";
                                     const name = res.first_name;
-                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.'
+                                    const body = `Thank you for submitting your Application to MahaIT’s BlockChain Driven
+                                    Certificate cum Document Authentication Application. We will come back to
+                                    you in 3 – 5 days time after doing the verification of all the Documents on your
+                                    Registered E-Mail Id`
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
@@ -242,7 +249,10 @@ function submitApplication(req, res){
                                     }
                                     const subject = "Document Authentication Application";
                                     const name = res.first_name;
-                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.';
+                                    const body = `Thank you for submitting your Application to MahaIT’s BlockChain Driven
+                                    Certificate cum Document Authentication Application. We will come back to
+                                    you in 3 – 5 days time after doing the verification of all the Documents on your
+                                    Registered E-Mail Id`
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,

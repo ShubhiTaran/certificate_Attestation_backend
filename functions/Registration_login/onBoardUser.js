@@ -53,15 +53,15 @@ function onBoardUser(req, res) {
                     }
                 }
                 else {
-                    const subject = "DeskOfficer Registration Successful";
+                    const subject = "DeskOfficer Registration";
                     const name = first_name;
-                    const body = `You are successfully registered with us.`;
-                    const pass = ` Your password is ${res}`
+                    const body = `You have successfully logged in to MahaIT’s BlockChain Driven Certificate cum
+                    Document Authentication Application. Your password is ${res}`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
                         subject: subject,
-                        html:template(subject, name, body, pass)
+                        html:template(subject, name, body)
                     },
                         function (error, info) {
                             if (error) {
@@ -131,15 +131,15 @@ function onBoardUser(req, res) {
                     let result = await invoke.main(key, data)
                     let chk = result.toString('utf8')
                     // console.log("result", JSON.parse(chk))
-                    const subject = "Deputy Secretary Registration Successful";
+                    const subject = "Deputy Secretary Registration";
                     const name = first_name;
-                    const body = `You are successfully registered with us.`;
-                    const pass = ` Your password is ${res}`
+                    const body = `You have successfully logged in to MahaIT’s BlockChain Driven Certificate cum
+                    Document Authentication Application. Your password is ${res}`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
                         subject: subject,
-                        html:template(subject, name, body, pass)
+                        html:template(subject, name, body)
                     },
                         function (error, info) {
                             if (error) {

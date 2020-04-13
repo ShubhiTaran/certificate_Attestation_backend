@@ -62,9 +62,12 @@ function finalVerification(req, res){
         date = date.getDate()+"-"+month+"-"+date.getFullYear();
         console.log(firstStatus)
         if(firstStep.application_form[0].final_status == "Approved"){
-            const subject = "Final level verification result";
+            const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
-            const body = `Your final level verification is successfully completed on ${date}`;
+            const body = `We from the MahaIT New Technology Team take the pleasure to anounce that
+            the Final Level Verification of all your Documents / Certificates have been
+            completed successfully on ${date}`;
+
             transporter.sendMail({
                 from : config.mail_id,
                 to : firstStep.email_id,
@@ -88,7 +91,7 @@ function finalVerification(req, res){
 
         }
         else if(firstStep.application_form[0].final_status == "Rejected"){
-            const subject = "Final level verification result";
+            const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason. 
                             ${firstReason} Please make necessary changes and refill the application`
@@ -114,7 +117,7 @@ function finalVerification(req, res){
             })
         }
         else if(firstStep.application_form[0].final_status == "Correction"){
-            const subject = "Final level verification result";
+            const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason.
                             ${firstReason}. 
@@ -123,7 +126,7 @@ function finalVerification(req, res){
             transporter.sendMail({
                 from : config.mail_id,
                     to : firstStep.email_id,
-                    subject : "Final level verification result",
+                    subject : subject,
                     html:template(subject, name, body)
             },
             function(error, info){

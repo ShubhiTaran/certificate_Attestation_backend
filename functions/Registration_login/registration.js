@@ -36,9 +36,10 @@ function studentRegistration(req, res) {
                 }
                 else {
  
-                    const subject = 'Document Authentication Email Verification';
+                    const subject = 'Document Authentication Registration';
                     const name = req.first_name
-                    const body = `You are successfully registered with us.`;
+                    const body = `You have successfully logged in to MahaIT’s BlockChain Driven Certificate cum
+                    Document Authentication Application.`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
@@ -75,13 +76,14 @@ function studentRegistration(req, res) {
                 else {
                     const subject = "Document Authentication Email Verification";
                     const name = req.first_name;
-                    const body = `Following is the OTP of your Document Authentication portal.`;
-                    const assOtp = `OTP : ${req.email_otp }`;
+                    const body = `It’s a pleasure to welcome you to the MahaIT’s Novel IT Initiative - a BlockChain
+                    Driven Certificate cum Document Authentication Application. Please use the
+                    OTP Number ${req.email_otp} to login to our Application`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
                         subject: subject,
-                        html:template(subject, name, body, assOtp)
+                        html:template(subject, name, body)
 
                     },
                         function (error, info) {

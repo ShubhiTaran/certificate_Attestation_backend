@@ -61,10 +61,18 @@ function firstVerification(req, res) {
         date = date.getDate()+"-"+month+"-"+date.getFullYear();
         console.log(firstStatus)
         if (firstStatus == "Approved") {
-            const subject = "First level verification result";
+            const subject = `First Level Verification Result - Document Authentication Application`;
             const name = firstStep.first_name;
-            const body = `Your first level verification is successfully completed and your documents have been verified on ${date}. 
-                        Please schedule an appointment to visit the department for physical verification.`;
+            const body = ` We are pleased to write that your First Level Verification has been successfully
+                completed and your Documents have been verified on ${date}. \n\n
+
+                You are requested to kindly plan and schedule a time of your convenience to
+                visit the Office of the Education Department, Govt. of Maharashtra at the
+                following Address based on the Application Calendar for the purpose of getting
+                all your Documents Physically Verified (Do not forget to carry all the Documents
+                in ORIGINAL):`
+            
+            
 
             transporter.sendMail({
                 from : config.mail_id,
@@ -88,7 +96,7 @@ function firstVerification(req, res) {
             })
         }
         else if (firstStatus == "Rejected") {
-            const subject = "First level verification result";
+            const subject = "First Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason.
                             ${firstReason}.
@@ -97,7 +105,7 @@ function firstVerification(req, res) {
             transporter.sendMail({
                 from : config.mail_id,
                     to : firstStep.email_id,
-                    subject : "First level verification result",
+                    subject : subject,
                     html:template(subject, name, body)
             },
             function(error, info){
@@ -116,7 +124,7 @@ function firstVerification(req, res) {
             })
         }
         else if (firstStatus == "Correction") {
-            const subject = "First level verification result";
+            const subject = "First Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason.
                         ${firstReason}. Please make necessary changes and resubmit the documents. 

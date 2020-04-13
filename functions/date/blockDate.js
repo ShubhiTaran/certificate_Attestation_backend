@@ -69,13 +69,14 @@ function blockDate(req, res) {
                                                     .then((response) => {
                                                         console.log(response)
                                                         const subject= "Document Attestation Re-Scheduling";
-                                                        const name = `Hello ${ res[0].first_name}, `
-                                                        const body = `You need to re-schedule your appointment date because on ${date}. Deputy Secretary is ${date_remark}`;
+                                                        const name = res[0].first_name;
+                                                        const body = `You need to re-schedule your appointment date because on ${date}. 
+                                                                    Deputy Secretary is ${date_remark}`;
                                                         transporter.sendMail({
                                                             from: config.mail_id,
                                                             to: email_id,
                                                             subject: subject, 
-                                                            html:template(subject,name, body)
+                                                            html:template(subject, name, body)
                                                         },
                                                             function (error, info) {
                                                                 if (error) {
