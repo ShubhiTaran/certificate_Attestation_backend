@@ -1,7 +1,7 @@
-module.exports.template = (subject, name, message, otp='', url='') =>{
+module.exports.template = (subject, name, message, otp = '', url = '') => {
 
-    const myurl = url ? { text: 'Reset Password', url } : { text:'', url}
-    console.log('myurl', myurl);
+    const anchor =  url ? ` <a href="${myurl.url}" class='anc_b' >Reset Password</a>` : ``;
+    console.log('myurl', anchor);
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -78,7 +78,7 @@ module.exports.template = (subject, name, message, otp='', url='') =>{
                 <p>Dear ${name},</p>
                 <p> ${message} </P>
                 <p style="font-weight: bold;"> ${otp}   </p>
-                <a href="${myurl.url}" class='anc_b' >${myurl.text}</a>
+                ${ anchor }
                 <br/>
                 <br/>
                 <hr />

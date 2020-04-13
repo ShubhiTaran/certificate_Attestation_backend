@@ -3,8 +3,8 @@ const config = {
     forget_password_url:'http://digitalattestation.mahait.org',
     port:587,
     express_port:3000,
-    db:"mongodb://172.32.1.63:27017/daa",
-    //db:"mongodb://localhost/daa",
+    // db:"mongodb://172.32.1.63:27017/daa",
+    db:"mongodb://localhost/daa",
     communicate:'sushilkumar.shinde@nic.in',
     mail_service:'smtp.office365.com',
     // mail_id: 'Digital.Attestation@mahait.org',
@@ -22,8 +22,3 @@ const config = {
 }
 
 module.exports = config
-
-
-// 4200
-// 172.32.1.13
-// 465

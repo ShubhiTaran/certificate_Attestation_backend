@@ -77,8 +77,8 @@ require("./functions/Registration_login/addAdmin")();
 
 try{
 var options={
-    key:fs.readFileSync('ssl/mahagovprivate.keys'),
-  cert:fs.readFileSync('ssl/star_maharashtra_gov_in.crt'),
+    key:fs.readFileSync('ssl/private.key'),
+  cert:fs.readFileSync('ssl/certificate.crt'),
 secureOptions:constants.SSL_OP_NO_TLSv1 | constants.SSL_OP_NO_TLSv1_1
 }
 https.createServer(options, app).listen(port, function(){
