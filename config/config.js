@@ -4,13 +4,14 @@ const config = {
     port:587,
     express_port:3000,
     // db:"mongodb://172.32.1.63:27017/daa",
-   db:"mongodb://localhost/daa",
-    
+//    db:"mongodb://localhost/daa",
+    db:'mongodb://SreeAnanthaKannan:qwe$7500@ds163354.mlab.com:63354/testt',
     communicate:'sushilkumar.shinde@nic.in',
     mail_service:'smtp.office365.com',
-    mail_id: 'Digital.Attestation@mahait.org',
-    mail_password: '5erv!5e5@M@h@!T@DABC',
-
+    // mail_id: 'Digital.Attestation@mahait.org',
+    // mail_password: '5erv!5e5@M@h@!T@DABC',
+    mail_id:'sree.kannan@rapidqube.com',
+    mail_password:'asd$7500',
     addminData:{
         "user_type": "admin",
         "first_name": "Admin",
@@ -21,7 +22,7 @@ const config = {
     },
 
     attachments: [{
-        filename: 'logo_a.png',
+        filename: 'logo_as.png',
         path: './public/assets/img/logo_a.png',
         cid: 'logo'
     }]

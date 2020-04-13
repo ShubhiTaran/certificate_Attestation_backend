@@ -2,11 +2,11 @@
 
 const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
-const config = require('../../config/config')
-const request = require('request');
+const config = require('../../config/config');
 const exec = require('child_process').exec;
-const path = require('path');
-const os = require('os');
+const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     firstVerification: firstVerification,
@@ -61,22 +61,25 @@ function firstVerification(req, res) {
         date = date.getDate()+"-"+month+"-"+date.getFullYear();
         console.log(firstStatus)
         if (firstStatus == "Approved") {
+            const subject = "First level verification result";
+            const name = firstStep.first_name;
+            const body = `Your first level verification is successfully completed and your documents have been verified on ${date}. 
+                        Please schedule an appointment to visit the department for physical verification.`;
 
             transporter.sendMail({
                 from : config.mail_id,
                 to : firstStep.email_id,
-                subject : "First level verification result",
-                text : "Dear " + firstStep.first_name + ",\n\n" +
-                            "Your first level verification is successfully completed and your documents have been verified on "+date+".\n\n" + 
-                            "Please schedule an appointment to visit the department for physical verification.\n\n" +
-                            "Thank you,\nMaharashtra Education Department"
+                subject :subject,
+                html:template(subject, name, body)
             },
             function(error, info){
                 if(error){
-                    console.log(error)
+                    console.log(error);
+                    log.info("Email failed", error);
                 }
                 else{
                         console.log("Email sent: " + info.response);
+                        log.info('Email send: ' + info.response);
                 }
             })
 
@@ -85,21 +88,26 @@ function firstVerification(req, res) {
             })
         }
         else if (firstStatus == "Rejected") {
+            const subject = "First level verification result";
+            const name = firstStep.first_name;
+            const body = `Sorry, your request for verification of documents is not accepted due to following reason.
+                            ${firstReason}.
+                            Please make necessary changes and refill the application.`;
+
             transporter.sendMail({
                 from : config.mail_id,
                     to : firstStep.email_id,
                     subject : "First level verification result",
-                    text : "Dear " + firstStep.first_name + ",\n\nSorry, your request for verification of documents is not accepted due to following reason.\n\nReason : " +
-                            firstReason+"\n\n" +
-                            "Please make necessary changes and refill the application.\n\n" + 
-                            "Thank you,\nMaharashtra Education Department"
+                    html:template(subject, name, body)
             },
             function(error, info){
                 if(error){
-                    console.log(error)
+                    console.log(error);
+                    log.info("Email failed", error);
                 }
                 else{
                         console.log("Email sent: " + info.response);
+                        log.info('Email send: ' + info.response);
                 }
             })
 
@@ -108,22 +116,25 @@ function firstVerification(req, res) {
             })
         }
         else if (firstStatus == "Correction") {
+            const subject = "First level verification result";
+            const name = firstStep.first_name;
+            const body = `Sorry, your request for verification of documents is not accepted due to following reason.
+                        ${firstReason}. Please make necessary changes and resubmit the documents. 
+                        Please note that you can’t schedule your visit for physical verification yet.`;
             transporter.sendMail({
                 from : config.mail_id,
                     to : firstStep.email_id,
-                    subject : "First level verification result",
-                    text : "Dear " + firstStep.first_name + ",\n\nSorry, your request for verification of documents is not accepted due to following reason.\n\nReason : " +
-                            firstReason+"\n\n" + 
-                            "Please make necessary changes and resubmit the documents.\n" +
-                            "Please note that you can’t schedule your visit for physical verification yet.\n\n" +
-                            "Thank you,\nMaharashtra Education Department"
+                    subject : subject,
+                    html:template(subject, name, body)
             },
             function(error, info){
                 if(error){
-                    console.log(error)
+                    console.log(error);
+                    log.info("Email failed", error);
                 }
                 else{
                         console.log("Email sent: " + info.response);
+                        log.info('Email send: ' + info.response);
                 }
             })
 

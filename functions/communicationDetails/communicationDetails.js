@@ -2,6 +2,10 @@
 const commDB = require('.././../models/communication/communication');
 var nodemailer = require('nodemailer');
 const config = require('../../config/config')
+const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
+
 
 module.exports = {
     communicationDetails
@@ -27,23 +31,24 @@ function communicationDetails(req,res){
 
         const commObj = new commDB(req);
         await commObj.save(function (error,response){
+            const name = 'Hello DeskOfficer,';
+            const body = `${message} You can contact to the concerned person through email ${email_id} 
+                            or You can call to the concerned person at mobile no ${contact_no}`
             if(response != null){
                 transporter.sendMail({
                     from : config.mail_id,
                     to : config.communicate,
                     subject : subject,
-                    text : "Hello DeskOfficer,\n\n" + message +"\n\n"+
-                           "You can contact to the concerned person through email :- "+email_id+"\n or \n"+
-                           "You can call to the concerned person at mobile no :-"+contact_no+
-                            "\n\nThank you"
-
+                    html:template(subject, name, body)
                 },
                 function(error, info){
                     if(error){
                         console.log(error)
+                        log.info("Email failed", error);
                     }
                     else{
                             console.log("Email sent: " + info.response);
+                            log.info('Email send: ' + info.response);
                     }
                 })
             return resolve({

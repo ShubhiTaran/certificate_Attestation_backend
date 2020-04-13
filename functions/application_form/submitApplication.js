@@ -4,6 +4,8 @@ const db = require('.././../models/student/studentDetails');
 const config = require('../../config/config')
 const nodemailer = require('nodemailer');
 const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     submitApplication : submitApplication,
@@ -67,23 +69,25 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
-                                    const head = `Dear ${res.first_name}, `;
+                                    const subject = 'Document Authentication Application'
+                                    const name = res.first_name;
                                     const body = `Thank you for submitting your documents. 
                                                     We will get back to you on your registered email address post 
                                                     verification of submitted documents.`;
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
-                                        subject : "Document Authentication Application",
-                                        attachments:config.attachments,
-                                        html:template(head, body)
+                                        subject : subject,
+                                        html:template(subject,name, body)
                                     },
                                     function(error, info){
                                         if(error){
                                             console.log(error)
+                                            log.info("Email failed", error);
                                         }
                                         else{
                                                 console.log("Email sent: " + info.response);
+                                                log.info('Email send: ' + info.response);
                                         }
                                     })
                                     return resolve({
@@ -91,6 +95,7 @@ function submitApplication(req, res){
                                     })
                                 })
                                 .catch((err) => {
+                                    log.info(err)
                                     return resolve({
                                         "message" : "Oops something went wrong."
                                     })
@@ -119,22 +124,23 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
-                                    const subject = '';
-                                    const head = ``
+                                    const subject = 'Document Authentication Application';
+                                    const name = res.first_name;
+                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.'
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
-                                        subject : "Document Authentication Application",
-                                        text : "Dear " + res.first_name + ",\n\n" +
-                                                    "Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.\n\n" +
-                                                    "Thank you,\nMaharashtra Education Department"
+                                        subject : subject,
+                                        html:template(subject,name, body)
                                     },
                                     function(error, info){
                                         if(error){
                                             console.log(error)
+                                            log.info("Email failed", error);
                                         }
                                         else{
                                                 console.log("Email sent: " + info.response);
+                                                log.info('Email send: ' + info.response);
                                         }
                                     })
                                     return resolve({
@@ -142,6 +148,7 @@ function submitApplication(req, res){
                                     })
                                 })
                                 .catch((err) => {
+                                    log.info(err)
                                     return resolve({
                                         "message" : "Oops something went wrong."
                                     })
@@ -173,20 +180,23 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
+                                    const subject = "Document Authentication Application";
+                                    const name = res.first_name;
+                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.'
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
-                                        subject : "Document Authentication Application",
-                                        text : "Dear " + res.first_name + ",\n\n" +
-                                                    "Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.\n\n" +
-                                                    "Thank you,\nMaharashtra Education Department"
+                                        subject : subject, 
+                                        html:template(subject,name, body)
                                     },
                                     function(error, info){
                                         if(error){
                                             console.log(error)
+                                            log.info("Email failed", error);
                                         }
                                         else{
                                                 console.log("Email sent: " + info.response);
+                                                log.info('Email send: ' + info.response);
                                         }
                                     })
                                     return resolve({
@@ -194,6 +204,7 @@ function submitApplication(req, res){
                                     })
                                 })
                                 .catch((err) => {
+                                    log.info(err)
                                     return resolve({
                                         "message" : "Oops something went wrong."
                                     })
@@ -229,20 +240,23 @@ function submitApplication(req, res){
                                             var app = res.application_form[i]
                                         }
                                     }
+                                    const subject = "Document Authentication Application";
+                                    const name = res.first_name;
+                                    const body = 'Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.';
                                     transporter.sendMail({
                                         from : config.mail_id,
                                         to : res.email_id,
-                                        subject : "Document Authentication Application",
-                                        text : "Dear " + res.first_name + ",\n\n" +
-                                                    "Thank you for submitting your documents. We will get back to you on your registered email address post verification of submitted documents.\n\n" +
-                                                    "Thank you,\nMaharashtra Education Department"
+                                        subject : subject,
+                                        html:template(subject,name, body)
                                     },
                                     function(error, info){
                                         if(error){
                                             console.log(error)
+                                            log.info("Email failed", error);
                                         }
                                         else{
                                                 console.log("Email sent: " + info.response);
+                                                log.info('Email send: ' + info.response);
                                         }
                                     })
                                     return resolve({
@@ -250,6 +264,7 @@ function submitApplication(req, res){
                                     })
                                 })
                                 .catch((err) => {
+                                    log.info(err)
                                     return resolve({
                                         "message" : "Oops something went wrong."
                                     })
@@ -263,6 +278,7 @@ function submitApplication(req, res){
             })
             .catch((error) => {
                 console.log(error)
+                log.info(error)
                 return resolve({
                     "message" : "This application is not available."
                 })

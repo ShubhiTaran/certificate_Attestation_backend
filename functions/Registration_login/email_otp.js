@@ -4,11 +4,11 @@ var db = require('.././../models/student/studentDetails');
 var nodemailer = require('nodemailer');
 const config = require('../../config/config')
 const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
-const request = require('request');
 const exec = require('child_process').exec;
-const path = require('path');
-const os = require('os');
+
 
 module.exports = {
     email_otp: email_otp
@@ -35,22 +35,23 @@ function email_otp(req, res) {
             }
         }, { new: true })
             .then((result) => {
-                const head = `Hello ${result.first_name}, `;
-                const boyd = ``
+                const subject = "Document Authentication Registration";
+                const name = result.first_name;
+                const body = 'You are successfully registered with us.';
                 transporter.sendMail({
                     from : config.mail_id,
                     to : result.email_id,
-                    subject : "Document Authentication Registration",
-                    text : "Hello " + result.first_name + ",\n\nYou are successfully registered with us." +
-                            "\n\nThank you,\nMaharashtra H&TE Department"
-
+                    subject : subject,
+                    html:template(subject, name, body)
                 },
                 function(error, info){
                     if(error){
-                        console.log(error)
+                        console.log(error);
+                        log.info("Email failed", error);
                     }
                     else{
                             console.log("Email sent: " + info.response);
+                            log.info('Email send: ' + info.response);
                     }
                 })
                 return resolve({
@@ -58,6 +59,7 @@ function email_otp(req, res) {
                 })
             })
             .catch((error) => {
+                log.info(error)
                 return resolve({
                     "message": "Invalid OTP"
                 })

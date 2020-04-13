@@ -4,13 +4,14 @@ const deputyDB = require(".././../models/deputySecratery/deputySecretaryDetails"
 const deskOfficeDB = require('.././../models/deskOfficer/deskOfficerDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
-const request = require('request');
 const exec = require('child_process').exec;
-const path = require('path');
-const os = require('os');
 const invoke = require('../../fabcar/javascript/invoke')
 const { key_gen } = require('../key_generator')
 const query = require('../../fabcar/javascript/query')
+
+const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     onBoardUser: onBoardUser
@@ -52,20 +53,24 @@ function onBoardUser(req, res) {
                     }
                 }
                 else {
+                    const subject = "DeskOfficer Registration Successful";
+                    const name = first_name;
+                    const body = `You are successfully registered with us.`;
+                    const pass = ` Your password is ${res}`
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
-                        subject: "DeskOfficer Registration Successful",
-                        text: "Hello " + first_name + ",\n\nYou are successfully registered with us. Your password is " + res + "" +
-                            "\n\nThank you,\nMaharashtra H&TE Department"
-
+                        subject: subject,
+                        html:template(subject, name, body, pass)
                     },
                         function (error, info) {
                             if (error) {
                                 console.log(error)
+                                log.info("Email failed", error);
                             }
                             else {
                                 console.log("Email sent: " + info.response);
+                                log.info('Email send: ' + info.response);
                             }
                         })
                     return resolve({
@@ -126,21 +131,24 @@ function onBoardUser(req, res) {
                     let result = await invoke.main(key, data)
                     let chk = result.toString('utf8')
                     // console.log("result", JSON.parse(chk))
-
+                    const subject = "Deputy Secretary Registration Successful";
+                    const name = first_name;
+                    const body = `You are successfully registered with us.`;
+                    const pass = ` Your password is ${res}`
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
-                        subject: "Deputy Secretary Registration Successful",
-                        text: "Hello " + first_name + ",\n\nYou are successfully registered with us. Your password is " + res + "" +
-                            "\n\nThank you,\nMaharashtra H&TE Department"
-
+                        subject: subject,
+                        html:template(subject, name, body, pass)
                     },
                         function (error, info) {
                             if (error) {
-                                console.log(error)
+                                console.log(error);
+                                log.info("Email failed", error);
                             }
                             else {
                                 console.log("Email sent: " + info.response);
+                                log.info('Email send: ' + info.response);
                             }
                         })
                     return resolve({

@@ -4,10 +4,10 @@ const datedb = require("../../models/calander/date");
 const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
-const request = require('request');
 const exec = require('child_process').exec;
-const path = require('path');
-const os = require('os');
+const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     blockDate: blockDate
@@ -68,20 +68,23 @@ function blockDate(req, res) {
                                                 }, { new: true })
                                                     .then((response) => {
                                                         console.log(response)
+                                                        const subject= "Document Attestation Re-Scheduling";
+                                                        const name = `Hello ${ res[0].first_name}, `
+                                                        const body = `You need to re-schedule your appointment date because on ${date}. Deputy Secretary is ${date_remark}`;
                                                         transporter.sendMail({
                                                             from: config.mail_id,
                                                             to: email_id,
-                                                            subject: "Document Attestation Re-Scheduling",
-                                                            text: "Hello " + res[0].first_name + ",\n\nYou need to re-schedule your appointment date because on " + date + " .Deputy Secretary is " + date_remark + " " +
-                                                                "\n\nThank you,\nMaharashtra H&TE Department"
-
+                                                            subject: subject, 
+                                                            html:template(subject,name, body)
                                                         },
                                                             function (error, info) {
                                                                 if (error) {
                                                                     console.log(error)
+                                                                    log.info("Email failed", error);
                                                                 }
                                                                 else {
                                                                     console.log("Email sent: " + info.response);
+                                                                    log.info('Email send: ' + info.response);
                                                                 }
                                                             })
                                                     })
@@ -131,6 +134,7 @@ function blockDate(req, res) {
                 }
             })
             .catch((error) => {
+                log.info(error)
                 dateObj.save(function (error, result) {
 
                     if (error) {

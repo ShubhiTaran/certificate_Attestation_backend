@@ -3,8 +3,9 @@
 const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
-const os = require('os');
-
+const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     forgotPassword: forgotPassword,
@@ -27,10 +28,7 @@ function forgotPassword(req, res) {
 
         var forgotPassword = await db.findOne({
             "email_id": email_id,
-        })
-
-        // var allAddress = os.networkInterfaces();
-        // var ipAddress = allAddress.eth0[0].address;
+        });
 
         if (forgotPassword != null) {
 
@@ -41,14 +39,15 @@ function forgotPassword(req, res) {
             }, { new: true })
 
             console.log(setPassword.set_password_id)
-            transporter.sendMail({
+            const subject = 'Document Authentication Reset password';
+            const name = setPassword.first_name;
+            const body = `Please set your password from following link.`
+            const url = `${ config.forget_password_url}/#/reset-pass?set_password_id=${setPassword.set_password_id}`
+                        transporter.sendMail({
                 from: config.mail_id,
                 to: setPassword.email_id,
-                subject: "Document Authentication Reset password",
-                text: "Hello " + setPassword.first_name + ",\n\nPlease set your password from following link.\n\n" +
-                config.forget_password_url + "/#/reset-pass?set_password_id=" +
-                    setPassword.set_password_id +
-                    "\n\nThank you,\nMaharashtra Education Department"
+                subject: subject,
+                html:template(subject, name, body, '', url)
             })
             return resolve({
                 "message": "Reset password link has been sent to your registered email id."

@@ -4,6 +4,8 @@ const db = require('.././../models/student/studentDetails');
 const nodemailer = require('nodemailer');
 const config = require('../../config/config')
 const {template}  = require('../../email_template/htmlTemplate')
+var log4js = require('log4js');
+var log = log4js.getLogger("app");
 
 module.exports = {
     studentRegistration: studentRegistration
@@ -35,21 +37,22 @@ function studentRegistration(req, res) {
                 else {
  
                     const subject = 'Document Authentication Email Verification';
-                    const head = `Hello ${req.first_name}, `
+                    const name = req.first_name
                     const body = `You are successfully registered with us.`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
                         subject: subject,
-                        attachments: config.attachments,
-                        html:template(head, body)
+                        html:template(subject, name, body)
                     },
                         function (error, info) {
                             if (error) {
-                                console.log(error)
+                                console.log(error);
+                                log.info("Email failed", error);
                             }
                             else {
                                 console.log("Email sent: " + info.response);
+                                log.info('Email send: ' + info.response);
                             }
                         })
                     return resolve({
@@ -71,23 +74,24 @@ function studentRegistration(req, res) {
                 }
                 else {
                     const subject = "Document Authentication Email Verification";
-                    const head = `Dear ${req.first_name}, `;
+                    const name = req.first_name;
                     const body = `Following is the OTP of your Document Authentication portal.`;
                     const assOtp = `OTP : ${req.email_otp }`;
                     transporter.sendMail({
                         from: config.mail_id,
                         to: req.email_id,
                         subject: subject,
-                        attachments: config.attachments,
-                        html:template(head, body, assOtp)
+                        html:template(subject, name, body, assOtp)
 
                     },
                         function (error, info) {
                             if (error) {
-                                console.log(error)
+                                console.log(error);
+                                log.info("Email failed", error);
                             }
                             else {
                                 console.log("Email sent: " + info.response);
+                                log.info('Email send: ' + info.response);
                             }
                         })
                     return resolve({

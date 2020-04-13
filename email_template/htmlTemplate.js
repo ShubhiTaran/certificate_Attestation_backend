@@ -1,6 +1,7 @@
-module.exports.template = (heading, message, otp='') =>{
+module.exports.template = (subject, name, message, otp='', url='') =>{
 
-
+    const myurl = url ? { text: 'Reset Password', url } : { text:'', url}
+    console.log('myurl', myurl);
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -42,9 +43,18 @@ module.exports.template = (heading, message, otp='') =>{
                 /* margin-top: 10px; */
             }
     
-            a{
+            .anc_a {
                 color: #ffffff;
                 text-decoration: none;
+            }
+            .anc_b{
+                display: inline-block;
+                color: #ffffff;
+                text-decoration: none;
+                padding:10px;
+                background-color: #1f305c;
+                text-align: center;
+                border-radius: 5px;
             }
         </style>
     </head>
@@ -52,8 +62,7 @@ module.exports.template = (heading, message, otp='') =>{
         <div style="background-color: #1f305c; padding: 20px 40px;">
             <div>
             <div class="head">
-                <img src="cid:logo" alt="mahait log"> 
-                <!-- <img src="../public/assets/img/logo_a.png" alt="img" />-->
+                 <img src="https://res.cloudinary.com/dmzpphfye/image/upload/v1586749370/dam/logo_a_tmpbkr.png" alt="mhaitlog" />
                 <div>
                 <p class="head_a">Higher & Technical Education Department </p>
                   <p class="head_b"> Government of Maharashtra</p>
@@ -61,14 +70,15 @@ module.exports.template = (heading, message, otp='') =>{
             </div>
             <!-- <br /> -->
             <div style="background-color: #48d2a0;">
-                <p class="head_c">${heading}</p>
+                <p class="head_c">${subject}</p>
             </div>
     
             <div style="background-color: #ffffff; text-align: left; padding: 20px;">
                 
-                <p>Dear Kannan,</p>
+                <p>Dear ${name},</p>
                 <p> ${message} </P>
                 <p style="font-weight: bold;"> ${otp}   </p>
+                <a href="${myurl.url}" class='anc_b' >${myurl.text}</a>
                 <br/>
                 <br/>
                 <hr />
@@ -80,7 +90,7 @@ module.exports.template = (heading, message, otp='') =>{
             <div style="color: #ffffff; text-align: center; font-size: 12px;">
                 <br/>
                <p style="margin-bottom: 5px;"> All Rights Reserved. Developed by MAHAIT  © 2019  |  Privacy Policy, Terms & Conditions  </p>
-                <a href="http://digitalattestation.mahait.org">www.digitalattestation.mahait.org</a>
+                <a class='anc_a' href="http://digitalattestation.mahait.org">www.digitalattestation.mahait.org</a>
             </div>
         </div>
         </div>

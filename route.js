@@ -3,17 +3,10 @@
 const moment = require("moment");
 
 var _ = require("lodash");
-const crypto = require('crypto');
-const cors = require("cors");
-const url = require("url");
-const queryString = require("querystring");
 const isEmpty = require("is-empty");
-const nodemailer = require("nodemailer");
 const dropdown = require("country-state-city").default;
 var express = require('express');
-var SHA256 = require("crypto-js/sha256");
 var ExpressBrute = require('express-brute');
-const config = require('./config/config');
 var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
 
 
