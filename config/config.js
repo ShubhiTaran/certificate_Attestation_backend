@@ -3,9 +3,8 @@ const config = {
     forget_password_url:'http://digitalattestation.mahait.org',
     port:587,
     express_port:3000,
-    // db:"mongodb://172.32.1.63:27017/daa",
-//    db:"mongodb://localhost/daa",
-    db:'mongodb://SreeAnanthaKannan:qwe$7500@ds163354.mlab.com:63354/testt',
+    db:"mongodb://172.32.1.63:27017/daa",
+    //db:"mongodb://localhost/daa",
     communicate:'sushilkumar.shinde@nic.in',
     mail_service:'smtp.office365.com',
     // mail_id: 'Digital.Attestation@mahait.org',
@@ -19,13 +18,7 @@ const config = {
         "phone_number":"7869074062",
         "email_id": "admin@mahait.com",
         "password": "123456"
-    },
-
-    attachments: [{
-        filename: 'logo_as.png',
-        path: './public/assets/img/logo_a.png',
-        cid: 'logo'
-    }]
+    }
 }
 
 module.exports = config
