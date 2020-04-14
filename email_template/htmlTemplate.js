@@ -1,6 +1,6 @@
 module.exports.template = (subject, name, message, otp = '', url = '') => {
 
-    const anchor =  url ? ` <a href="${myurl.url}" class='anc_b' >Reset Password</a>` : ``;
+    const anchor =  url ? ` <a href="${url}" class='anc_b' >Reset Password</a>` : ``;
     console.log('myurl', anchor);
     return `<!DOCTYPE html>
     <html lang="en">
