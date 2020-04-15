@@ -61,7 +61,7 @@ function finalVerification(req, res){
         var month = date.getMonth()+1;
         date = date.getDate()+"-"+month+"-"+date.getFullYear();
         console.log(firstStatus)
-        if(firstStep.application_form[0].final_status == "Approved"){
+        if(firstStatus == "Approved"){
             const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `We from the MahaIT New Technology Team take the pleasure to anounce that
@@ -90,7 +90,7 @@ function finalVerification(req, res){
             })
 
         }
-        else if(firstStep.application_form[0].final_status == "Rejected"){
+        else if(firstStatus == "Rejected"){
             const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason. 
@@ -116,7 +116,7 @@ function finalVerification(req, res){
                 "message" : "Rejection mail successfully sent to the applicant."
             })
         }
-        else if(firstStep.application_form[0].final_status == "Correction"){
+        else if(firstStatus == "Correction"){
             const subject = "Final Level Verification Result - Document Authentication Application";
             const name = firstStep.first_name;
             const body = `Sorry, your request for verification of documents is not accepted due to following reason.
