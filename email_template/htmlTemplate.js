@@ -2,6 +2,7 @@ module.exports.template = (subject, name, message, otp = '', url = '') => {
 
     const anchor =  url ? ` <a href="${url}" class='anc_b' >Reset Password</a>` : ``;
     console.log('myurl', anchor);
+
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -14,15 +15,11 @@ module.exports.template = (subject, name, message, otp = '', url = '') => {
                 font-family: Helvetica;
             }
            .head{
-               display: flex;
-               align-items: center;
-               justify-content: space-between !important;
                background-color:#dbfbf3;
                padding: 15px 15px;
                color:#004b8f;
                text-align: center;
                font-size: 23px;
-               font-family: Roboto;
            }
            img{
                height: 70px;
@@ -62,9 +59,6 @@ module.exports.template = (subject, name, message, otp = '', url = '') => {
                     border-radius: 5px;
                 }
                 .green{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
                     color:#ffffff;
                     font-size: 21px;
                     padding: 15px;
@@ -87,32 +81,49 @@ module.exports.template = (subject, name, message, otp = '', url = '') => {
                     text-align: center;
                     padding: 25px 0px;
                 }
+                
         </style>
     </head>
     <body>
         <div style="background-color: #1f305c; ">
             <div>
             <div class="head">
-                <img src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935078/mahait/gomLogo1.png" alt="gomLogo" />
-                <div>
-                <p class="head_a">Higher & Technical Education Department </p>
-                  <p class="head_b"> Government of Maharashtra</p>
-                </div>
-                <img src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935085/mahait/mahait-logo.png" alt="mahaitLogo" />
+                <table style="width:100%">
+                    <tr>
+                      <th>
+                        <img src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935078/mahait/gomLogo1.png" alt="gomLogo" />
+                      </th>
+                      <th>
+                        <p class="head_a">Higher & Technical Education Department </p>
+                        <p class="head_b"> Government of Maharashtra</p>
+                      </th> 
+                      <th>
+                        <img src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935085/mahait/mahait-logo.png" alt="mahaitLogo" />
+                      </th>
+                    </tr>
+                  </table>
             </div>
             <!-- body -->
+    
             <div style="margin: 20px 20px;">
-                <div class='green'>
-                    <div>
-                    <p style="margin-top:0px; margin-bottom:6px;">Reminder</p>
-                    <p style="margin:0px;">${subject}</p>
-                    </div>
-                     <img class="test" src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935143/mahait/img.svg" alt="test" />
+                <div class='green clearfix'>
+                    <table style="width:100%">
+                        <tr>
+                          <th style="text-align: left;" >
+                            <p style="margin-top:0px; margin-bottom:6px;">Reminder</p>
+                            <p style="margin:0px;">${subject}</p>
+                          </th>
+                          <th>
+                            <img class="test" src="https://res.cloudinary.com/rapidqubechennai/image/upload/v1586935143/mahait/img.svg" alt="test" />
+                          </th> 
+                        </tr>
+                      </table>
                 </div>
                 <div  style="background-color: #ffffff; text-align: left; padding: 20px;">
                     <p class="dear" >Dear ${name},</p>
-                <p> ${message} </P>
-                ${ anchor }
+                    <p> ${message} </P>
+                    ${ anchor }
+    
                 <br/>
                 <p>Thank you.</p>
                 <br/>
@@ -135,6 +146,8 @@ module.exports.template = (subject, name, message, otp = '', url = '') => {
         </div>
         </div>
     </body>
-    </html>`
+    </html>
+    
+    `
 
 }
